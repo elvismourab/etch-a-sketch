@@ -1,16 +1,23 @@
+let value = 16;
+
 function createGrids() {
     const grid = document.getElementById('grid');
 
-    for (let i = 1; i <= 256; i++) {
+    const width = grid.clientWidth;
+    const squareSize = (width / value);
+    const gridValue = value * value;
+
+    for (let i = 1; i <= gridValue; i++) {
         const div = document.createElement('div');
         div.classList.add('square');
+        div.style.height = squareSize + 'px';
+        div.style.width = squareSize + 'px'
         grid.appendChild(div);
     };
 }
 
 function createPenEffect() {
     const squares = document.getElementsByClassName('square');
-    console.log(typeof squares);
 
     for (let square of squares) {
         square.addEventListener('mouseenter', () => {
@@ -25,3 +32,11 @@ function createPenEffect() {
 
 createGrids();
 createPenEffect();
+
+const sizeButton = document.getElementById('size-button');
+sizeButton.addEventListener('click', () => {
+    value = prompt('Informe o número de quadros: ');
+    grid.innerText = '';
+    createGrids();
+    createPenEffect();
+})
