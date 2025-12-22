@@ -21,14 +21,20 @@ function createPenEffect() {
     const squares = document.getElementsByClassName('square');
 
     for (let square of squares) {
-        square.addEventListener('mouseenter', () => {
-            square.classList.add('hoovered');
-        })
+        if (square.classList.contains('random-rgb')) {
+            square.addEventListener('mouseenter', () => {
+                square.style.backgroundColor = randomizeRgb();
+            })
+        } else {
+            square.addEventListener('mouseenter', () => {
+                square.classList.add('hoovered');
+            })
+        }
     }
 }
 
 function createGridValue() {
-    const sizeButton = document.getElementById('size-button');
+    const sizeButton = document.getElementById('button-size');
     sizeButton.addEventListener('click', () => {
         gridValue = Number(globalThis.prompt('Informe o número de quadros (1-100): ', DEFAULT_GRID));
         if (gridValue === null || !gridValue) return;
@@ -42,6 +48,31 @@ function createGridValue() {
     })
 }
 
+function randomizeRgb() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    console.log(`rgb(${r}, ${g}, ${b})`);
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+function createRandomRgb() {
+    const randomRgb = document.getElementById('button-random-rgb');
+    randomRgb.addEventListener('click', () => {
+        const squares = document.getElementsByClassName('square');
+        for (let square of squares) {
+            if (square.classList.contains('random-rgb')) {
+                square.classList.remove('random-rgb');
+            } else {
+                square.classList.add('random-rgb');
+                square.classList.remove('hoovered');
+            }
+        }
+        createPenEffect();
+    })
+}
+
 createGrid();
 createPenEffect();
 createGridValue();
+createRandomRgb();
