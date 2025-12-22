@@ -1,13 +1,14 @@
-let value = 16;
+const DEFAULT_GRID = 16;
+let gridValue = DEFAULT_GRID;
 
-function createGrids() {
+function createGrid() {
     const grid = document.getElementById('grid');
 
     const width = grid.clientWidth;
-    const squareSize = (width / value);
-    const gridValue = value * value;
+    const squareSize = (width / gridValue);
+    const totalGrid = gridValue * gridValue;
 
-    for (let i = 1; i <= gridValue; i++) {
+    for (let i = 1; i <= totalGrid; i++) {
         const div = document.createElement('div');
         div.classList.add('square');
         div.style.height = squareSize + 'px';
@@ -23,20 +24,24 @@ function createPenEffect() {
         square.addEventListener('mouseenter', () => {
             square.classList.add('hoovered');
         })
-
-        square.addEventListener('mouseleave', () => {
-            square.classList.remove('hoovered');
-        })
     }
 }
 
-createGrids();
-createPenEffect();
+function createGridValue() {
+    const sizeButton = document.getElementById('size-button');
+    sizeButton.addEventListener('click', () => {
+        gridValue = Number(globalThis.prompt('Informe o número de quadros (1-100): ', DEFAULT_GRID));
+        if (gridValue === null || !gridValue) return;
+        if (gridValue < 1 || gridValue > 100) {
+            alert('Atenção! Deve ser informado um valor de 1 à 100!');
+            return;
+        }
+        grid.innerText = '';
+        createGrid();
+        createPenEffect();
+    })
+}
 
-const sizeButton = document.getElementById('size-button');
-sizeButton.addEventListener('click', () => {
-    value = prompt('Informe o número de quadros: ');
-    grid.innerText = '';
-    createGrids();
-    createPenEffect();
-})
+createGrid();
+createPenEffect();
+createGridValue();
