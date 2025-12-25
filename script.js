@@ -1,5 +1,7 @@
 const DEFAULT_GRID = 16;
 let gridValue = DEFAULT_GRID;
+let blackPenMode = true;
+let isRandomMode = false;
 
 function createGrid() {
     const grid = document.getElementById('grid');
@@ -18,19 +20,31 @@ function createGrid() {
 }
 
 function createPenEffect() {
-    const squares = document.getElementsByClassName('square');
-
-    for (let square of squares) {
-        if (square.classList.contains('random-rgb')) {
-            square.addEventListener('mouseenter', () => {
-                square.style.backgroundColor = randomizeRgb();
-            })
+    const handlePenEffect = (event) => {
+        console.log("event", event);
+        if (isRandomMode) {
+            activateRandomRgb(event.target);
         } else {
-            square.addEventListener('mouseenter', () => {
-                square.classList.add('hoovered');
-            })
+            activateBlackPen(event.target);
         }
     }
+
+    const squares = document.getElementsByClassName('square');
+    for (let square of squares) {
+        square.addEventListener('mouseenter', handlePenEffect);
+    }
+}
+
+function activateBlackPen(element) {
+    element.style.backgroundColor = '';
+    element.classList.add('hoovered');
+}
+
+function activateRandomRgb(element) {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    element.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 }
 
 function createGridValue() {
@@ -48,31 +62,22 @@ function createGridValue() {
     })
 }
 
-function randomizeRgb() {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    console.log(`rgb(${r}, ${g}, ${b})`);
-    return `rgb(${r}, ${g}, ${b})`;
-}
+function createButtonEvents() {
+    const blackPenButton = document.getElementById('button-black-pen');
+    const randomRgbButton = document.getElementById('button-random-rgb');
 
-function createRandomRgb() {
-    const randomRgb = document.getElementById('button-random-rgb');
-    randomRgb.addEventListener('click', () => {
-        const squares = document.getElementsByClassName('square');
-        for (let square of squares) {
-            if (square.classList.contains('random-rgb')) {
-                square.classList.remove('random-rgb');
-            } else {
-                square.classList.add('random-rgb');
-                square.classList.remove('hoovered');
-            }
-        }
-        createPenEffect();
+    blackPenButton.addEventListener('click', () => {
+        isRandomMode = false;
+        blackPenMode = !blackPenMode;
+    })
+
+    randomRgbButton.addEventListener('click', () => {
+        blackPenMode = false;
+        isRandomMode = !isRandomMode;
     })
 }
 
 createGrid();
 createPenEffect();
 createGridValue();
-createRandomRgb();
+createButtonEvents();
