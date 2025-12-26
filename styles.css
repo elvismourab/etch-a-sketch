@@ -4,24 +4,42 @@
 
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#div {
+    display: flex;
+    align-items: center;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
 }
 
 #grid {
-    border: 2px solid black;
+    border: 2px solid #000;
     display: flex;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-    height: 600px;
-    width: 600px;
-    margin: 6rem;
+    height: 37.5rem;
+    width: 37.5rem;
+    margin: 1rem 10rem;
 }
 
 .square {
-    border: 1px solid blue;
+    border: 1px solid #dadada;
 }
 
 .hoovered {
-    background-color: black;
+    background-color: #000;
+}
+
+button {
+    width: 5rem;
+    height: 5rem;
+    text-align: center;
 }

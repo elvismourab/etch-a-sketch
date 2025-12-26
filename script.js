@@ -41,10 +41,13 @@ function createPenEffect() {
 
 function activateBlackPen(element) {
     element.style.backgroundColor = '';
+    element.style.opacity = 1;
     element.classList.add('hoovered');
 }
 
 function activateRandomRgb(element) {
+    element.style.backgroundColor = '';
+    element.style.opacity = 1;
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
     const b = Math.floor(Math.random() * 256);
@@ -52,7 +55,8 @@ function activateRandomRgb(element) {
 }
 
 function activateOpacityMode(element) {
-    element.style.backgroundColor = 'black';
+    element.style.backgroundColor = '';
+    element.style.backgroundColor = '#000';
     let opacity = Number(element.style.opacity);
     if (opacity !== 1) {
         element.style.opacity = opacity + 0.1;
