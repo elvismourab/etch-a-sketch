@@ -1,7 +1,8 @@
 const DEFAULT_GRID = 16;
 let gridValue = DEFAULT_GRID;
 let blackPenMode = true;
-let isRandomMode = false;
+let randomMode = false;
+let opacityMode = false;
 
 function createGrid() {
     const grid = document.getElementById('grid');
@@ -21,11 +22,14 @@ function createGrid() {
 
 function createPenEffect() {
     const handlePenEffect = (event) => {
-        console.log("event", event);
-        if (isRandomMode) {
-            activateRandomRgb(event.target);
-        } else {
+        if (blackPenMode) {
             activateBlackPen(event.target);
+        }
+        if (randomMode) {
+            activateRandomRgb(event.target);
+        }
+        if (opacityMode) {
+            activateOpacityMode(event.target);
         }
     }
 
@@ -47,6 +51,14 @@ function activateRandomRgb(element) {
     element.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 }
 
+function activateOpacityMode(element) {
+    element.style.backgroundColor = 'black';
+    let opacity = Number(element.style.opacity);
+    if (opacity !== 1) {
+        element.style.opacity = opacity + 0.1;
+    };
+}
+
 function createGridValue() {
     const sizeButton = document.getElementById('button-size');
     sizeButton.addEventListener('click', () => {
@@ -65,15 +77,24 @@ function createGridValue() {
 function createButtonEvents() {
     const blackPenButton = document.getElementById('button-black-pen');
     const randomRgbButton = document.getElementById('button-random-rgb');
+    const opacityButton = document.getElementById('button-opacity');
 
     blackPenButton.addEventListener('click', () => {
-        isRandomMode = false;
-        blackPenMode = !blackPenMode;
+        randomMode = false;
+        opacityMode = false;
+        blackPenMode = true;
     })
 
     randomRgbButton.addEventListener('click', () => {
         blackPenMode = false;
-        isRandomMode = !isRandomMode;
+        opacityMode = false;
+        randomMode = true;
+    })
+
+    opacityButton.addEventListener('click', () => {
+        blackPenMode = false;
+        randomMode = false;
+        opacityMode = true;
     })
 }
 
