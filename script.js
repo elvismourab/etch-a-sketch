@@ -3,6 +3,7 @@ let gridValue = DEFAULT_GRID;
 let blackPenMode = true;
 let randomMode = false;
 let opacityMode = false;
+let eraserMode = false;
 
 function createGrid() {
     const grid = document.getElementById('grid');
@@ -30,6 +31,9 @@ function createPenEffect() {
         }
         if (opacityMode) {
             activateOpacityMode(event.target);
+        }
+        if (eraserMode) {
+            activateEraserMode(event.target);
         }
     }
 
@@ -63,6 +67,11 @@ function activateOpacityMode(element) {
     };
 }
 
+function activateEraserMode(element) {
+    element.style.opacity = 1;
+    element.style.backgroundColor = '#fff';
+}
+
 function createGridValue() {
     const sizeButton = document.getElementById('button-size');
     sizeButton.addEventListener('click', () => {
@@ -82,23 +91,34 @@ function createButtonEvents() {
     const blackPenButton = document.getElementById('button-black-pen');
     const randomRgbButton = document.getElementById('button-random-rgb');
     const opacityButton = document.getElementById('button-opacity');
+    const eraserButton = document.getElementById('button-eraser');
 
     blackPenButton.addEventListener('click', () => {
+        blackPenMode = true;
         randomMode = false;
         opacityMode = false;
-        blackPenMode = true;
+        eraserMode = false;
     })
 
     randomRgbButton.addEventListener('click', () => {
         blackPenMode = false;
-        opacityMode = false;
         randomMode = true;
+        opacityMode = false;
+        eraserMode = false;
     })
 
     opacityButton.addEventListener('click', () => {
         blackPenMode = false;
         randomMode = false;
         opacityMode = true;
+        eraserMode = false;
+    })
+
+    eraserButton.addEventListener('click', () => {
+        blackPenMode = false;
+        randomMode = false;
+        opacityMode = false;
+        eraserMode = true;
     })
 }
 
