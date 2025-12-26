@@ -7,16 +7,12 @@ let eraserMode = false;
 
 function createGrid() {
     const grid = document.getElementById('grid');
-
-    const width = grid.clientWidth;
-    const squareSize = (width / gridValue);
+    grid.style.setProperty('--grid-size', gridValue);
     const totalGrid = gridValue * gridValue;
 
     for (let i = 1; i <= totalGrid; i++) {
         const div = document.createElement('div');
         div.classList.add('square');
-        div.style.height = squareSize + 'px';
-        div.style.width = squareSize + 'px'
         grid.appendChild(div);
     };
 }
@@ -75,7 +71,7 @@ function activateEraserMode(element) {
 function createGridValue() {
     const sizeButton = document.getElementById('button-size');
     sizeButton.addEventListener('click', () => {
-        gridValue = Number(globalThis.prompt('Informe o número de quadros (1-100): ', DEFAULT_GRID));
+        gridValue = Math.round(Number(globalThis.prompt('Informe o número de quadros (1-100): ', DEFAULT_GRID)));
         if (gridValue === null || !gridValue) return;
         if (gridValue < 1 || gridValue > 100) {
             alert('Atenção! Deve ser informado um valor de 1 à 100!');

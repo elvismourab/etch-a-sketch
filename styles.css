@@ -35,6 +35,8 @@ body {
 
 .square {
     border: 1px solid #dadada;
+    width: calc(100% / var(--grid-size));
+    height: calc(100% / var(--grid-size));
 }
 
 .hoovered {
