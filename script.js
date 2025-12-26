@@ -59,7 +59,6 @@ function activateRandomRgb(element) {
 }
 
 function activateOpacityMode(element) {
-    element.style.backgroundColor = '';
     element.style.backgroundColor = '#000';
     let opacity = Number(element.style.opacity);
     if (opacity !== 1) {
