@@ -10,7 +10,10 @@
 
 ## 📖 Descrição
 
-Este projeto faz parte do currículo do [The Odin Project](https://www.theodinproject.com/lessons/foundations-etch-a-sketch). O objetivo é aplicar os aprendizados sobre manipulação do DOM e flexbox.
+Este projeto faz parte do currículo do [The Odin Project](https://www.theodinproject.com). 
+O objetivo é aplicar os aprendizados sobre manipulação do DOM e flexbox.
+
+-> [Project: Etch-a-sketch](https://www.theodinproject.com/lessons/foundations-etch-a-sketch)
 
 ## ✨ Funcionalidades
 
@@ -32,6 +35,9 @@ Este projeto faz parte do currículo do [The Odin Project](https://www.theodinpr
 - Utilização de handler compartilhado que lê flags globais (blackPenMode, randomMode, opacityMode, eraserMode).
 - método setProperty para atribuir width e height dinamicamente no css.
 
-<!-- ## Licença
+## 💻 Como Executar Localmente
 
-Este projeto está sob a licença [NOME_DA_LICENÇA]. -->
+1.  Clone o repositório.
+2.  Entre no diretório.
+3.  Abra o `index.html` no navegador.
+
