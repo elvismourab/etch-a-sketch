@@ -30,11 +30,11 @@ body {
     height: 42rem;
     width: 42rem;
     margin: 2rem 6rem;
+    background-color: #fff;
 }
 
 .square {
     border: 1px solid #dadada;
-    background-color: #fff;
 }
 
 .hoovered {

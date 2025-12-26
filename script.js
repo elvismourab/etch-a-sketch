@@ -67,8 +67,9 @@ function activateOpacityMode(element) {
 }
 
 function activateEraserMode(element) {
-    element.style.opacity = 1;
-    element.style.backgroundColor = '#fff';
+    element.style.backgroundColor = '';
+    element.style.opacity = '';
+    element.classList.remove('hoovered');
 }
 
 function createGridValue() {
