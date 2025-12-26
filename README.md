@@ -17,17 +17,17 @@ O objetivo é aplicar os aprendizados sobre manipulação do DOM e flexbox.
 
 ## ✨ Funcionalidades
 
-*   **Select size:** Comece com um grid padrão de 16x16 e ajuste o tamanho de 1x1 até 100x100.
-*   **⬛ Black pen:** O modo clássico para desenhar com a cor preta.
-*   **🌈 Random RGB:** Pinta cada quadrado com uma cor RGB diferente.
-*   **✒️ Opacity mode:** A cada passada, a caneta cria um efeito de sombra.
-*   **⬜ Eraser mode:** Apaga a cor dos quadrados.
+- **Select size:** Comece com um grid padrão de 16x16 e ajuste o tamanho de 1x1 até 100x100.
+- **⬛ Black pen:** O modo clássico para desenhar com a cor preta.
+- **🌈 Random RGB:** Pinta cada quadrado com uma cor RGB diferente.
+- **✒️ Opacity mode:** A cada passada, a caneta cria um efeito de sombra.
+- **⬜ Eraser mode:** Apaga a cor dos quadrados.
 
 ## 🛠️ Tech Stack
 
-*   HTML
-*   CSS
-*   JavaScript
+- HTML
+- CSS
+- JavaScript
 
 ## 🧠 O que aprendi
 
@@ -37,7 +37,6 @@ O objetivo é aplicar os aprendizados sobre manipulação do DOM e flexbox.
 
 ## 💻 Como Executar Localmente
 
-1.  Clone o repositório.
-2.  Entre no diretório.
-3.  Abra o `index.html` no navegador.
-
+1. Clone o repositório.
+2. Entre no diretório.
+3. Abra o `index.html` no navegador.
